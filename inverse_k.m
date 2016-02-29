@@ -1,6 +1,8 @@
 function [ theta ] = inverse_k( H60, d1, a1, a2, a3, d4, d6 )
-%UNTITLED Summary of this function goes here
-%   Detailed explanation goes here
+% Input the combined translation matrix for frame 6 with respect to frame
+% 0, in addition to the d1, a1, a2, a3, d4, d6 values from the DH table.
+% Returns a 1x6 vector with the different angles of theta necessary to
+% achieve that combined translation matrix.
     
     p60 = H60(1:3, 4);
     p50 = p60 - d6 * H60(1:3, 3);
