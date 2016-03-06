@@ -1,6 +1,8 @@
 H60_start = [1 0 0 -0.25; 0 -1 0 1.5; 0 0 -1 1.25; 0 0 0 1];
 H60_end = [0 0 1 0.5; 0 -1 0 1.75; 1 0 0 0.8; 0 0 0 1];
 
+options = optimset('Algorithm', 'levenberg-marquardt', 'Display', 'off');
+
 d1 = 0.4;
 a1 = 0.15;
 a2 = 1.2;
@@ -36,7 +38,7 @@ for i = 1:10
    H = zeros(4);
    H(1:3, 1:3) = R;
    H(1:3, 4) = p(1:3, i);
-   H(4,4) = 1
+   H(4,4) = 1;
 end
 
 p;
