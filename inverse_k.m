@@ -13,13 +13,13 @@ function [ theta ] = inverse_k( H60, d1, a1, a2, a3, d4, d6 )
     
     theta1 = atan2(y, x);
     
-    eta_x = sqrt(x^2 + y^2);
+    eta_x = sqrt(x^2 + y^2) - a1;
     eta_z = z - d1;
     d4_tilde = sqrt(a3^2 + d4^2);
     
     s3_tilde = (eta_x^2 + eta_z^2 - d4_tilde^2 - a2^2) / (2 * a2 * d4_tilde);
     c3_tilde = sqrt(1 - s3_tilde^2);
-    theta3_tilde = atan2(s3_tilde, c3_tilde);
+    theta3_tilde = atan2(s3_tilde, c3_tiflde);
     
     theta3 = theta3_tilde - atan(a3 / d4);
     theta2 = atan2(eta_x * d4_tilde * c3_tilde + eta_z * (d4_tilde * s3_tilde + a2), ...

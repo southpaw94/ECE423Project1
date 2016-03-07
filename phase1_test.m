@@ -41,5 +41,4 @@ for i = 1:10
    H(4,4) = 1;
 end
 
-p;
-phi_vals;
+q_end = fsolve(@f_industrial, theta_start * pi / 180, options)

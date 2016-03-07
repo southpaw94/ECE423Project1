@@ -29,4 +29,4 @@ pprint(A54)
 A65 = A.subs([(theta, t6), (d, 0.25), (alpha, 0 * pi / 180), (a, 0)])
 pprint(A65)
 
-A60 = A10 * A21 * A32 * A43 * A54 * A65
+A60 = simplify(A10 * A21 * A32 * A43 * A54 * A65)

@@ -1,15 +1,10 @@
-function F = f_industrial( q, H, d1, a1, a2, a3, d4, d6 )
+function F = f_industrial( q )
 %UNTITLED Summary of this function goes here
 %   Detailed explanation goes here
     theta = [q(1) q(2) q(3) q(4) q(5) q(6)];
-    d = [d1 0 0 d4 0 d6];
+    d = [0.4 0 0 1.0 0 0.25];
     alpha = [pi / 2 0 pi / 2 -pi / 2 90 0];
-    a = [a1 a2 a3 0 0 0];
-    
-    for i = 1:6
-        s(i) = sin(q(i));
-        c(i) = cos(q(i));
-    end
+    a = [0.15 1.2 0.1 0 0 0];
     
     A1 = a_matrix(theta(1), d(1), alpha(1), a(1));
     A2 = a_matrix(theta(2), d(2), alpha(2), a(2));
@@ -19,7 +14,9 @@ function F = f_industrial( q, H, d1, a1, a2, a3, d4, d6 )
     A6 = a_matrix(theta(6), d(6), alpha(6), a(6));
     
     A60 = A1 * A2 * A3 * A4 * A5 * A6;
-    F = A60(1:3, :) - H(1:3, :);
+    H60 = [0 0 1 0.5; 0 -1 0 1.75 ; 1 0 0 0.8; 0 0 0 1];
+    
+    F = A60(1:3, :) - H60(1:3, :);
 end
 
 function A = a_matrix(theta, d, alpha, a)
